@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CredWise AI - Alternative Credit Intelligence Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-navbar-fixed">
+            <div class="logo">
+                <img src="public/credwise-logo.svg" alt="CredWise AI Logo">
+                <span>CredWise AI</span>
+            </div>
+            <button class="hamburger-menu icon-button"><i class="fas fa-bars"></i></button>
+            <nav class="main-top-nav">
+                <ul class="nav-links">
+                    <li><a href="#loan-simulator" class="nav-item"><i class="fas fa-calculator"></i> Loan Simulator</a></li>
+                    <li><a href="#credit-score" class="nav-item"><i class="fas fa-chart-line"></i> Credit Score</a></li>
+                    <li><a href="#explain-ai" class="nav-item"><i class="fas fa-brain"></i> Explain AI</a></li>
+                    <li><a href="#suggestions" class="nav-item"><i class="fas fa-lightbulb"></i> Suggestions</a></li>
+                    <li><a href="#dashboard" class="nav-item active"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#settings" class="nav-item"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="nav-right-items">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search CredWise AI...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="navbar-actions">
+                    <button class="icon-button"><i class="fas fa-bell"></i><span class="badge">3</span></button>
+                    <div class="profile-dropdown">
+                        <button class="icon-button"><i class="fas fa-user-circle"></i></button>
+                        <div class="dropdown-menu">
+                            <a href="#">Profile</a>
+                            <a href="#">Settings</a>
+                            <a href="#">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-profile">
+                    <div class="avatar">
+                        <img src="public/user-avatar.png" alt="User Avatar">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">John Doe</span>
+                        <span class="user-role">Premium User</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Landing Page Section -->
+            <section id="landing" class="hero-section">
+                <div class="hero-content">
+                    <h1>AI-Powered Credit Scoring for the New India</h1>
+                    <p>Unlock your financial potential with intelligent insights and personalized recommendations.</p>
+                    <div class="cta-buttons">
+                        <button class="btn primary-btn">Check My Credit Score</button>
+                        <button class="btn secondary-btn">See How It Works</button>
+                    </div>
+                    <div class="stats-counter">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="250000">0</span>
+                            <span class="stat-label">Users Analyzed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="150000">0</span>
+                            <span class="stat-label">Loans Approved</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="98">0</span><span class="stat-suffix">%</span>
+                            <span class="stat-label">Accuracy Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loan Simulator Section -->
+            <section id="loan-simulator" class="loan-simulator-section content-section">
+                <h2>Loan Simulator</h2>
+                <div class="simulator-grid">
+                    <div class="input-form glass-card">
+                        <h3>Your Financial Details</h3>
+                        <div class="form-group">
+                            <label for="monthlyIncome">Monthly Income (INR)</label>
+                            <input type="number" id="monthlyIncome" value="50000">
+                        </div>
+                        <div class="form-group">
+                            <label for="expenses">Monthly Expenses (INR)</label>
+                            <input type="number" id="expenses" value="20000">
+                        </div>
+                        <div class="form-group">
+                            <label for="loanAmount">Requested Loan Amount (INR)</label>
+                            <input type="number" id="loanAmount" value="500000">
+                        </div>
+                        <div class="form-group">
+                            <label for="loanTerm">Loan Term (Months)</label>
+                            <input type="number" id="loanTerm" value="24">
+                        </div>
+                        <button class="btn primary-btn" id="calculateLoan">Calculate & Predict</button>
+                    </div>
+
+                    <div class="prediction-results glass-card">
+                        <h3>Prediction Results</h3>
+                        <div class="result-item">
+                            <span>Real-time AI Approval:</span>
+                            <span class="approval-status pending">Calculating...</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Estimated EMI:</span>
+                            <span class="emi-value">INR 0</span>
+                        </div>
+                        <div class="probability-gauge-container">
+                            <canvas id="probabilityGauge"></canvas>
+                            <div class="gauge-value">0%</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Explainable AI Section -->
+            <section id="explain-ai" class="explain-ai-section content-section">
+                <h2>Explainable AI</h2>
+                <button class="btn secondary-btn" id="explainAiBtn">Why did I get this score?</button>
+                <div class="glass-card">
+                    <h3>AI Explanation</h3>
+                    <ul id="dynamicExplanation"></ul>
+                </div>
+                <div class="explanation-cards-container">
+                    <!-- Explanation cards will be dynamically added here -->
+                    <div class="explanation-card glass-card">
+                        <h3>Income Stability</h3>
+                        <p>Your consistent income from a stable employer positively impacted your score.</p>
+                        <div class="contribution-chart">
+                            <canvas id="incomeStabilityChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="explanation-card glass-card">
+                        <h3>Payment History</h3>
+                        <p>Timely utility bill payments demonstrate responsible financial behavior.</p>
+                        <div class="contribution-chart">
+                            <canvas id="paymentHistoryChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="explanation-card glass-card">
+                        <h3>New Loan Applications</h3>
+                        <p>Recent increase in loan applications suggests potential higher risk.</p>
+                        <div class="contribution-chart">
+                            <canvas id="loanApplicationsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="bias-detection-badge glass-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Bias Detection: <span class="bias-status safe">No Bias Detected</span></span>
+                </div>
+            </section>
+
+            <!-- Financial Improvement Suggestions Section -->
+            <section id="suggestions" class="suggestions-section content-section">
+                <h2>Financial Improvement Suggestions</h2>
+                <div class="recommendation-cards-container">
+                    <div class="recommendation-card glass-card">
+                        <h3>Improve Repayment Consistency</h3>
+                        <p>Set up automatic payments for your bills to avoid missed due dates.</p>
+                        <div class="progress-tracker">
+                            <div class="progress-bar" style="width: 60%;"></div>
+                            <span>60% Complete</span>
+                        </div>
+                        <button class="btn primary-btn btn-small">Learn More</button>
+                    </div>
+                    <div class="recommendation-card glass-card">
+                        <h3>Reduce Monthly Spending Volatility</h3>
+                        <p>Create a budget and stick to it to maintain stable spending habits.</p>
+                        <div class="progress-tracker">
+                            <div class="progress-bar" style="width: 30%;"></div>
+                            <span>30% Complete</span>
+                        </div>
+                        <button class="btn primary-btn btn-small">Learn More</button>
+                    </div>
+                    <div class="recommendation-card glass-card">
+                        <h3>Increase Savings Buffer</h3>
+                        <p>Aim to save at least 3-6 months of living expenses for emergencies.</p>
+                        <div class="progress-tracker">
+                            <div class="progress-bar" style="width: 80%;"></div>
+                            <span>80% Complete</span>
+                        </div>
+                        <button class="btn primary-btn btn-small">Learn More</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Credit Dashboard Section -->
+            <section id="dashboard" class="dashboard-section content-section">
+                <h2>AI Credit Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="credit-score-card glass-card">
+                        <h3>Your CredWise Score</h3>
+                        <div class="score-circle">
+                            <canvas id="creditScoreCanvas"></canvas>
+                            <div class="score-value">750</div>
+                        </div>
+                        <p class="risk-level">Risk Level: <span class="risk-indicator low">Low</span></p>
+                    </div>
+
+                    <div class="approval-probability glass-card">
+                        <h3>Approval Probability</h3>
+                        <div class="probability-bar-container">
+                            <div class="probability-bar" style="width: 70%;"></div>
+                            <span class="probability-value">70%</span>
+                        </div>
+                        <p>Based on your current financial profile.</p>
+                    </div>
+
+                    <div class="alternative-data-breakdown glass-card">
+                        <h3>Alternative Data Breakdown</h3>
+                        <div class="chart-container">
+                            <canvas id="alternativeDataChart"></canvas>
+                        </div>
+                        <div class="breakdown-list">
+                            <div class="breakdown-item">
+                                <span>UPI Transactions Score:</span>
+                                <span class="score-badge good">A+</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Utility Bill Consistency:</span>
+                                <span class="score-badge excellent">Excellent</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Mobile Recharge Behavior:</span>
+                                <span class="score-badge average">Average</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Spending Stability Index:</span>
+                                <span class="score-badge good">Good</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
